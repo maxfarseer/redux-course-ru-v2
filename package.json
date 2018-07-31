@@ -23,7 +23,7 @@
     "prettier": "^1.14.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json}": [
+    "*.{js, jsx}": [
       "node_modules/.bin/eslint --max-warnings=0",
       "prettier --write",
       "git add"
