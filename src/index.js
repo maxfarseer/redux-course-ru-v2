@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { store } from './store/configureStore' // исправлено
-import App from './App'
+import { store } from './store/configureStore'
+import App from './containers/App' // изменили путь
 
 import registerServiceWorker from './registerServiceWorker'
 
