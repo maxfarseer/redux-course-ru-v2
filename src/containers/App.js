@@ -7,7 +7,6 @@ import { handleLogin } from '../actions/UserActions'
 
 class App extends Component {
   render() {
-    // вытащили handleLoginAction из this.props
     const { user, page, getPhotosAction, handleLoginAction } = this.props
     return (
       <div className="app">
@@ -15,9 +14,9 @@ class App extends Component {
           photos={page.photos}
           year={page.year}
           isFetching={page.isFetching}
+          error={page.error}
           getPhotos={getPhotosAction}
         />
-        {/* добавили новые props для User */}
         <User
           name={user.name}
           error={user.error}
@@ -31,7 +30,7 @@ class App extends Component {
 
 const mapStateToProps = store => {
   return {
-    user: store.user, // вытащили из стора (из редьюсера user все в переменную thid.props.user)
+    user: store.user,
     page: store.page,
   }
 }
@@ -39,7 +38,6 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     getPhotosAction: year => dispatch(getPhotos(year)),
-    // сделали this.props.handleLoginAction функцию, которая умеет диспатчить handleLogin
     handleLoginAction: () => dispatch(handleLogin()),
   }
 }

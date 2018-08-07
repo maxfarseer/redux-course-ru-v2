@@ -10,7 +10,7 @@ export class Page extends React.Component {
     const { photos, isFetching, error } = this.props
 
     if (error) {
-      return <p className="error"> Во время загрузки фото произошла ошибка</p>
+      return <p className="error">Во время загрузки фото произошла ошибка</p>
     }
 
     if (isFetching) {
@@ -60,7 +60,7 @@ export class Page extends React.Component {
 Page.propTypes = {
   year: PropTypes.number.isRequired,
   photos: PropTypes.array.isRequired,
-  getPhotos: PropTypes.func.isRequired, // setYear -> getPhotos
-  // добавили новое свойство - isFetching, причем в propTypes нет boolean, есть bool
+  getPhotos: PropTypes.func.isRequired,
+  error: PropTypes.string,
   isFetching: PropTypes.bool.isRequired,
 }
