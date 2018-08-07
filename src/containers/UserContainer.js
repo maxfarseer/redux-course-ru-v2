@@ -2,16 +2,26 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { User } from '../components/User'
 import { handleLogin } from '../actions/UserActions'
+import { getPhotos } from '../actions/PageActions'
 
 class UserContainer extends React.Component {
+  handleLogin = () => {
+    const { handleLogin, getPhotos, year } = this.props
+    const successCallback = () => {
+      getPhotos(year)
+    }
+
+    handleLogin(successCallback)
+  }
+
   render() {
-    const { user, handleLogin } = this.props
+    const { user } = this.props
     return (
       <User
         name={user.name}
         error={user.error}
         isFetching={user.isFetching}
-        handleLogin={handleLogin}
+        handleLogin={this.handleLogin}
       />
     )
   }
@@ -20,12 +30,14 @@ class UserContainer extends React.Component {
 const mapStateToProps = store => {
   return {
     user: store.user,
+    year: store.page.year,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleLogin: () => dispatch(handleLogin()),
+    handleLogin: successCallback => dispatch(handleLogin(successCallback)),
+    getPhotos: year => dispatch(getPhotos(year)),
   }
 }
 

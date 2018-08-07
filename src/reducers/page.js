@@ -5,7 +5,7 @@ import {
 } from '../actions/PageActions'
 
 const initialState = {
-  year: 2018,
+  year: new Date().getFullYear(),
   photos: [],
   isFetching: false,
   error: '',

@@ -2,7 +2,7 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCES = 'LOGIN_SUCCES'
 export const LOGIN_FAIL = 'LOGIN_FAIL'
 
-export function handleLogin() {
+export function handleLogin(callback) {
   return function(dispatch) {
     dispatch({
       type: LOGIN_REQUEST,
@@ -17,6 +17,7 @@ export function handleLogin() {
           type: LOGIN_SUCCES,
           payload: username,
         })
+        callback()
       } else {
         dispatch({
           type: LOGIN_FAIL,
