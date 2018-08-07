@@ -86,6 +86,7 @@ h3 {
   letter-spacing: .5px;
   transition: .2s ease-out;
   cursor: pointer;
+  margin-right: 3px;
 }
 .btn:hover {
   background-color: #6d8cb0
