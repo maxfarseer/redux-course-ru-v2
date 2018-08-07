@@ -15,16 +15,28 @@ export class User extends React.Component {
 
     if (name) {
       return <p>Привет, {name}!</p>
-    } else {
-      return (
-        <button className="btn" onClick={this.props.handleLogin}>
-          Войти
-        </button>
-      )
     }
   }
+
+  loginBtn = () => {
+    const { authorized, handleLogout, handleLogin, isFetching } = this.props
+    const btnName = authorized ? 'Выйти' : 'Войти'
+    const onClick = authorized ? handleLogout : handleLogin
+
+    return (
+      <button disabled={isFetching} className="btn" onClick={onClick}>
+        {btnName}
+      </button>
+    )
+  }
+
   render() {
-    return <div className="ib user">{this.renderTemplate()}</div>
+    return (
+      <div className="ib user">
+        {this.renderTemplate()}
+        {this.loginBtn()}
+      </div>
+    )
   }
 }
 
