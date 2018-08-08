@@ -41,10 +41,13 @@ export function getLoginStatus() {
     })
 
     // eslint-disable-next-line no-undef
-    VK.Auth.getLoginStatus(r => {
+    VK.Auth.login(r => {
       if (r.status === 'connected') {
+        const username = r.session.user.first_name
+
         dispatch({
           type: LOGIN_STATUS_SUCCESS,
+          payload: username,
         })
       } else {
         dispatch({

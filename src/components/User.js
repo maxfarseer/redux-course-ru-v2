@@ -19,7 +19,8 @@ export class User extends React.Component {
   }
 
   loginBtn = () => {
-    const { authorized, handleLogout, handleLogin, isFetching } = this.props
+    const { name, handleLogout, handleLogin, isFetching } = this.props
+    const authorized = Boolean(name)
     const btnName = authorized ? 'Выйти' : 'Войти'
     const onClick = authorized ? handleLogout : handleLogin
 

@@ -4,7 +4,6 @@ const initialState = {
   name: '',
   error: '',
   isFetching: false,
-  authorized: false,
 }
 
 export function userReducer(state = initialState, action) {
@@ -13,29 +12,19 @@ export function userReducer(state = initialState, action) {
       return { ...state, isFetching: true, error: '' }
 
     case t.LOGIN_SUCCES:
-      return {
-        ...state,
-        isFetching: false,
-        name: action.payload,
-        authorized: true,
-      }
+      return { ...state, isFetching: false, name: action.payload }
 
     case t.LOGIN_FAIL:
-      return {
-        ...state,
-        isFetching: false,
-        error: action.payload.message,
-        authorized: false,
-      }
+      return { ...state, isFetching: false, error: action.payload.message }
 
     case t.LOGIN_STATUS_REQUEST:
       return { ...state, isFetching: true, error: '' }
 
     case t.LOGIN_STATUS_SUCCESS:
-      return { ...state, isFetching: false, authorized: true, error: '' }
+      return { ...state, isFetching: false, error: '', name: action.payload }
 
     case t.LOGIN_STATUS_FAIL:
-      return { ...state, isFetching: false, authorized: false }
+      return { ...state, isFetching: false }
 
     case t.LOGOUT_REQUEST:
       return { ...state, isFetching: true, error: '' }
