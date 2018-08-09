@@ -39,7 +39,6 @@ export function getLoginStatus() {
       type: LOGIN_STATUS_REQUEST,
     })
 
-    // eslint-disable-next-line no-undef
     VK.Auth.login(r => {
       if (r.status === 'connected') {
         const username = r.session.user.first_name
@@ -62,7 +61,7 @@ export function handleLogout() {
     dispatch({
       type: LOGOUT_REQUEST,
     })
-    // eslint-disable-next-line no-undef
+
     VK.Auth.logout(r => {
       if (!r.session) {
         dispatch({
