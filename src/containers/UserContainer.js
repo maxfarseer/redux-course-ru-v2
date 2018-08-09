@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import { User } from '../components/User'
 import { handleLogin } from '../actions/UserActions'
 import { getPhotos } from '../actions/PageActions'
+import { getCurrentYear } from '../util/date'
 
 class UserContainer extends React.Component {
   handleLogin = () => {
-    const { handleLogin, getPhotos, year } = this.props
+    const { handleLogin, getPhotos } = this.props
     const successCallback = () => {
+      const year = getCurrentYear()
       getPhotos(year)
     }
 
@@ -30,7 +32,6 @@ class UserContainer extends React.Component {
 const mapStateToProps = store => {
   return {
     user: store.user,
-    year: store.page.year,
   }
 }
 
