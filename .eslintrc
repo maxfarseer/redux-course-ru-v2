@@ -3,6 +3,9 @@
     "react-app",
     "prettier"
   ],
+  "globals": {
+    "VK": true
+  },
   "rules": {
     "jsx-quotes": [
       1,
