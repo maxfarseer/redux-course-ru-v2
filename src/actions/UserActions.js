@@ -1,5 +1,5 @@
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
-export const LOGIN_SUCCES = 'LOGIN_SUCCES'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAIL = 'LOGIN_FAIL'
 export const LOGIN_STATUS_REQUEST = 'LOGIN_STATUS_REQUEST'
 export const LOGIN_STATUS_SUCCESS = 'LOGIN_STATUS_SUCCESS'
@@ -20,7 +20,7 @@ export function handleLogin() {
         const username = r.session.user.first_name
 
         dispatch({
-          type: LOGIN_SUCCES,
+          type: LOGIN_SUCCESS,
           payload: username,
         })
       } else {
