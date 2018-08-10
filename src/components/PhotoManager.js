@@ -49,9 +49,7 @@ export default class PhotoManager extends React.Component {
           onRequestClose={this.closeModal}
         >
           {activeIndex >= 0 && (
-            <div>
-              <img src={photos[activeIndex].sizes[4].url} alt="" />
-            </div>
+            <img src={photos[activeIndex].sizes[4].url} alt="" />
           )}
         </Modal>
       </React.Fragment>
