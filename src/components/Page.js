@@ -16,8 +16,8 @@ export class Page extends React.Component {
     if (isFetching) {
       return <p>Загрузка...</p>
     } else {
-      return photos.map((entry, index) => (
-        <div key={index} className="photo">
+      return photos.map(entry => (
+        <div key={entry.id} className="photo">
           <p>
             <img src={entry.sizes[0].url} alt="" />
           </p>
