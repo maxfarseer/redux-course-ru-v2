@@ -2,8 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Page } from '../components/Page'
 import { getPhotos } from '../actions/PageActions'
+import { getLastYears } from '../util/date'
+
+const LAST_5_YEARS = 5
 
 class PageContainer extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.years = getLastYears(LAST_5_YEARS)
+  }
+
   render() {
     const { page, getPhotos } = this.props
     return (
@@ -13,6 +22,7 @@ class PageContainer extends React.Component {
         isFetching={page.isFetching}
         error={page.error}
         getPhotos={getPhotos}
+        years={this.years}
       />
     )
   }

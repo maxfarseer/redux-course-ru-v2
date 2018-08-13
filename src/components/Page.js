@@ -7,7 +7,7 @@ export class Page extends React.Component {
     this.props.getPhotos(year) // setYear -> getPhotos
   }
   renderButtons = () => {
-    const years = [2018, 2017, 2016, 2015, 2014]
+    const { years } = this.props
 
     return years.map((item, index) => {
       return (
@@ -58,4 +58,5 @@ Page.propTypes = {
   getPhotos: PropTypes.func.isRequired,
   error: PropTypes.string,
   isFetching: PropTypes.bool.isRequired,
+  years: PropTypes.array.isRequired,
 }
