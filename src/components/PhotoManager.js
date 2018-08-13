@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 import ListPhoto from './ListPhoto'
+import BigPhoto from './BigPhoto'
 import PropTypes from 'prop-types'
 
 const customStyles = {
@@ -24,21 +25,21 @@ export default class PhotoManager extends React.Component {
 
     this.state = {
       modalIsOpen: false,
-      activeIndex: -1,
+      activeUrl: '',
     }
   }
 
-  openModal = index => {
-    this.setState({ modalIsOpen: true, activeIndex: index })
+  openModal = url => {
+    this.setState({ modalIsOpen: true, activeUrl: url })
   }
 
-  closeModal = index => {
-    this.setState({ modalIsOpen: false, activeIndex: -1 })
+  closeModal = () => {
+    this.setState({ modalIsOpen: false, activeUrl: '' })
   }
 
   render() {
     const { photos } = this.props
-    const { modalIsOpen, activeIndex } = this.state
+    const { modalIsOpen, activeUrl } = this.state
     return (
       <React.Fragment>
         <ListPhoto photos={photos} openModal={this.openModal} />
@@ -48,9 +49,7 @@ export default class PhotoManager extends React.Component {
           style={customStyles}
           onRequestClose={this.closeModal}
         >
-          {activeIndex >= 0 && (
-            <img src={photos[activeIndex].sizes[4].url} alt="" />
-          )}
+          <BigPhoto url={activeUrl} />
         </Modal>
       </React.Fragment>
     )
