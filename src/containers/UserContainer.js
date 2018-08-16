@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { User } from '../components/User'
-import { handleLogin } from '../actions/UserActions'
+import { LOGIN_REQUEST } from '../constants/User'
 import { getPhotos } from '../actions/PageActions'
 import { getCurrentYear } from '../util/date'
 
@@ -37,7 +37,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleLogin: successCallback => dispatch(handleLogin(successCallback)),
+    handleLogin: () => dispatch({ type: LOGIN_REQUEST }),
     getPhotos: year => dispatch(getPhotos(year)),
   }
 }
