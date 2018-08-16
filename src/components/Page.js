@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import PhotoManager from './PhotoManager'
 
 export class Page extends React.Component {
   onBtnClick = e => {
@@ -27,14 +28,7 @@ export class Page extends React.Component {
     if (isFetching) {
       return <p>Загрузка...</p>
     } else {
-      return photos.map(entry => (
-        <div key={entry.id} className="photo">
-          <p>
-            <img src={entry.sizes[0].url} alt="" />
-          </p>
-          <p>{entry.likes.count} ❤</p>
-        </div>
-      ))
+      return <PhotoManager photos={photos} />
     }
   }
 
