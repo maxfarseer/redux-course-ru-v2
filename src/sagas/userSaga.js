@@ -17,6 +17,7 @@ function vkLoginRequest() {
 }
 
 function* handleLogin(callback) {
+  // TODO: add callback or saga run for 2018 photos
   try {
     const username = yield call(vkLoginRequest)
     yield put({ type: LOGIN_SUCCESS, payload: username })

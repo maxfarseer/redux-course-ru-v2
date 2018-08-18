@@ -2,7 +2,7 @@ import {
   GET_PHOTOS_REQUEST,
   GET_PHOTOS_SUCCESS,
   GET_PHOTOS_FAIL,
-} from '../actions/PageActions'
+} from '../constants/Photos'
 import { getCurrentYear } from '../util/date'
 
 const initialState = {

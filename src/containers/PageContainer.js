@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Page } from '../components/Page'
-import { getPhotos } from '../actions/PageActions'
+import { GET_PHOTOS_REQUEST } from '../constants/Photos'
 import { getLastYears } from '../util/date'
 
 const LAST_5_YEARS = 5
@@ -36,7 +36,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPhotos: year => dispatch(getPhotos(year)),
+    getPhotos: year => dispatch({ type: GET_PHOTOS_REQUEST, payload: year }),
   }
 }
 
