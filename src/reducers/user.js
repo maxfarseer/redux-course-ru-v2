@@ -1,8 +1,4 @@
-import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-} from '../actions/UserActions'
+import * as t from '../actions/UserActions'
 
 const initialState = {
   name: '',
@@ -12,14 +8,24 @@ const initialState = {
 
 export function userReducer(state = initialState, action) {
   switch (action.type) {
-    case LOGIN_REQUEST:
+    case t.LOGIN_REQUEST:
+    case t.LOGIN_STATUS_REQUEST:
+    case t.LOGOUT_REQUEST:
       return { ...state, isFetching: true, error: '' }
 
-    case LOGIN_SUCCESS:
+    case t.LOGIN_SUCCESS:
+    case t.LOGIN_STATUS_SUCCESS:
       return { ...state, isFetching: false, name: action.payload }
 
-    case LOGIN_FAIL:
+    case t.LOGIN_FAIL:
+    case t.LOGOUT_FAIL:
       return { ...state, isFetching: false, error: action.payload.message }
+
+    case t.LOGIN_STATUS_FAIL:
+      return { ...state, isFetching: false }
+
+    case t.LOGOUT_SUCCESS:
+      return initialState
 
     default:
       return state

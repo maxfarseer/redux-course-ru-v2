@@ -17,7 +17,7 @@ export function pageReducer(state = initialState, action) {
       return { ...state, year: action.payload, isFetching: true, error: '' }
 
     case GET_PHOTOS_SUCCESS:
-      return { ...state, photos: action.payload, isFetching: false, error: '' }
+      return { ...state, photos: action.payload, isFetching: false }
 
     case GET_PHOTOS_FAIL:
       return { ...state, error: action.payload.message, isFetching: false }
